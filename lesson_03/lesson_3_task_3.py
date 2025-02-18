@@ -2,11 +2,11 @@ from address import Address
 from mailing import Mailing
 
 address_from = Address(
-    postal_code = "123456",
-    city = "Москва",
-    street = "Тверская",
-    building = "10",
-    apartment = "25"
+    postal_cod="123456",
+    city="Москва",
+    street="Тверская",
+    building="10",
+    apartment="25"
 )
 
 address_to = Address(
@@ -18,10 +18,10 @@ address_to = Address(
 )
 
 mailing = Mailing(
-    to_address = address_to,
-    from_address = address_from,
-    cost = 500.00,
-    track = "AS123456789RU"
+    to_address=address_to,
+    from_address=address_from,
+    cost=500.00,
+    track="AS123456789RU"
 )
 
 print(
