@@ -66,6 +66,7 @@ def test_contains_negative(input_str, symbol, expected):
 @pytest.mark.parametrize("input_str, symbol, expected", [
     ("Skypro", "S", "kypro"),
     ("Skypro", "Sky", "pro"),
+    ("Skypro", "Z", "Skypro"),
 ])
 def test_delete_symbol_positive(input_str, symbol, expected):
     assert string_utils.delete_symbol(input_str, symbol) == expected

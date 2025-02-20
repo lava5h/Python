@@ -33,7 +33,7 @@ class StringUtils:
         """
         res = False
         try:
-            res = string.index(symbol) > -1
+            res = symbol in string
         except ValueError:
             pass
 
