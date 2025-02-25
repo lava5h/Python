@@ -12,7 +12,7 @@ driver.get("http://the-internet.herokuapp.com/add_remove_elements/")
 
 # Находим кнопку Add Element и кликаем на неё 5 раз
 add_element_button = driver.find_element(By.XPATH, "//button[text()='Add Element']")
-for _ in range(5):
+for i in range(5):
     add_element_button.click()
 
 # Список кнопок Delete
