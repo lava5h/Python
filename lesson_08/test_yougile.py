@@ -1,14 +1,15 @@
 import pytest
+from pages.page_yougile import CreateProjects
+from pages.page_yougile import ChangeProjects 
+from pages.page_yougile import GetProjects
 
 # Данные для авторизации
-token = "..."
+token = "FExXjke2GyQGH3w2N9jopal13Ji68dPb64EAE7I3yUj--LC1+Y-E3CtABUDyj29J"
 
 # URL для создания проекта
 url = "https://ru.yougile.com/"
 
-# Создание проектов
-from pages.page_yougile import CreateProjects
-
+# Создание проекта
 def test_create_positive():
     
     create_project = CreateProjects(url, token)
@@ -16,10 +17,10 @@ def test_create_positive():
 
     # Проверка статуса ответа
     assert response.status_code == 201
+    response_body = response.json()
+    assert "id" in response_body
+    assert isinstance(response_body["id"], str)
     return create_project
-
-if __name__ == "__main__":
-    test_create_positive()
 
 def test_create_negative():
     
@@ -27,13 +28,9 @@ def test_create_negative():
     response = create_project.create_project_negative(url)
 
     # Проверка статуса ответа
-    assert response.status_code == 400
+    assert response.status_code == 400  
 
-if __name__ == "__main__":
-    test_create_negative()
-
-from pages.page_yougile import ChangeProjects    
-
+# Изменение проекта
 def test_change_positive():
 
     create_project = test_create_positive()
@@ -44,9 +41,9 @@ def test_change_positive():
     
     # Проверка статуса ответа
     assert response.status_code == 200
-
-if __name__ == "__main__":
-    test_change_positive()
+    response_body = response.json()
+    assert "id" in response_body
+    assert isinstance(response_body["id"], str)
 
 def test_change_negative():
 
@@ -57,13 +54,9 @@ def test_change_negative():
     response = change_project.change_project_negative(url)
     
     # Проверка статуса ответа
-    assert response.status_code == 400
+    assert response.status_code == 400 
 
-if __name__ == "__main__":
-    test_change_negative()
-
-from pages.page_yougile import GetProjects 
-
+# Получения информации проекта
 def test_get_positive():
 
     create_project = test_create_positive()
@@ -74,9 +67,9 @@ def test_get_positive():
     
     # Проверка статуса ответа
     assert response.status_code == 200
-
-if __name__ == "__main__":
-    test_get_positive()
+    response_body = response.json()
+    assert "id" in response_body
+    assert isinstance(response_body["id"], str)
 
 def test_get_negative():
 
@@ -88,6 +81,3 @@ def test_get_negative():
     
     # Проверка статуса ответа
     assert response.status_code == 404
-
-if __name__ == "__main__":
-    test_get_negative()
